@@ -11,7 +11,6 @@ export const getDb = async () => {
 };
 
 export const createUser = async (user: UserModelCreateInput) => {
-  console.log(user, '<<< ini model');
   const modifiedUser = {
     ...user,
     password: hashPass(user.password),
@@ -24,7 +23,6 @@ export const createUser = async (user: UserModelCreateInput) => {
 
 export const getUserByEmail = async (email: string) => {
   const db = await getDb();
-  console.log('apakah masuk');
   const user = await db.collection('Users').findOne({ email });
   return user;
 };

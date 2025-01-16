@@ -4,9 +4,6 @@ import { ObjectId } from 'mongodb';
 import { connectRedis } from '../config/redis';
 
 export const getProduct = async (page: number, name: string): Promise<ProductModelOutput[]> => {
-  const redis = await connectRedis();
-   const user = await redis.get('user:session')
-   console.log(user, "<<<< ini usernya")
   const skipValue = (page - 1) * 10;
   const db = await getDb();
   const products = (await db

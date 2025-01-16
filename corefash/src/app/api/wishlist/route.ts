@@ -1,4 +1,4 @@
-import { addWishlist, getWishList, removeWishlist } from '@/db/models/wishlist';
+import { addWishlist, getWishList, getWishListRedis, removeWishlist } from '@/db/models/wishlist';
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 
@@ -10,7 +10,7 @@ const id = z.object({
 export async function GET(request: NextRequest) {
   const userId = request.headers.get('x-user-id') as string;
 
-  const myWishList = await getWishList(userId);
+  const myWishList = await getWishListRedis(userId);
   return NextResponse.json(myWishList);
 }
 

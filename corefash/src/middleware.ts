@@ -4,14 +4,13 @@ import { readPayloadJose } from './lib/jwt';
 import type { NextRequest } from 'next/server';
 
 export async function middleware(request: NextRequest) {
-  if (request.url.includes('/api/wishlist')) {
-    let authorization;
-    authorization = cookies().get('Authorization');
+  if (request.url.includes('/api/wishlist') || request.url.includes('/api/redis') || request.url.includes('/api/elastic') || request.url.includes('/api/mongodb')) {
+    let authorization: any;
+    authorization = cookies().get('Authorization') as {value: string};
     if(!authorization){
-      authorization = request.headers.get('Authorization');
+      authorization = request.headers.get('Authorization') as {};
       authorization = {value: authorization}
     }
-    console.log(authorization, "<<<< ini authorizationnya")
 
     if (!authorization) {
       return NextResponse.json(
@@ -44,9 +43,7 @@ export async function middleware(request: NextRequest) {
   }
 }
 
-// export function middleware(request: NextRequest) {
-//   console.log(request.url);
-// }
+
 
 export const config = {
   matcher: ['/api/:path*'],

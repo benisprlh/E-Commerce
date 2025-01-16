@@ -22,14 +22,12 @@ export async function POST(request: Request) {
     const body: userType = await request.json();
 
     const validation = User.safeParse(body);
-    console.log(body);
 
     if (!validation.success) {
       throw validation.error;
     }
 
     const user = await getUserByEmail(body.email);
-    console.log(user);
 
     if (!user) {
       return NextResponse.json(
@@ -43,7 +41,7 @@ export async function POST(request: Request) {
     }
 
     const isValid = comparePass(body.password, user.password);
-    console.log(isValid);
+    (isValid);
 
     if (!isValid) {
       return NextResponse.json(
@@ -61,7 +59,6 @@ export async function POST(request: Request) {
       email: user.email,
     });
 
-    console.log(access_token);
 
     const response = NextResponse.json(
       {

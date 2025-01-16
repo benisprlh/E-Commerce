@@ -6,7 +6,6 @@ export default function AddToWishList({ productId }: { productId: string | undef
       method: 'POST',
     });
     const message = await response.json();
-    console.log(message, "<<<<, ini messagenya")
   }
 
   return (

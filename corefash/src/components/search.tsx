@@ -5,7 +5,6 @@ import { Dispatch, SetStateAction } from 'react';
 export default function Search({ search, setSearch }: { search: string; setSearch: Dispatch<SetStateAction<string>> }) {
   function handleSearch(e: any) {
     setSearch(e.target.value);
-    console.log(search);
   }
 
   return (

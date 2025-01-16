@@ -21,16 +21,13 @@ export default function Login() {
       }),
     });
 
-    console.log(response, '<<< ini tes');
 
     const result = await response.json();
-    console.log(response.ok);
     if (!response.ok) {
       return redirect('login?error=' + result.message);
     }
 
     if (result.data) {
-      console.log(result.data.access_token, "<<<< ini tokennya")
       cookies().set('Authorization', `Bearer ${result.data.access_token}`);
       return redirect('/');
     }

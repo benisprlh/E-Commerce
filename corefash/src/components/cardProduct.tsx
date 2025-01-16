@@ -12,7 +12,7 @@ export default function CardProduct({ product, isRemove }: { product: ProductMod
     <div className="mx-3 my-2 flex items-stretch">
       <div className={`card flex-1 w-96 lg:h-[500px] h-[600px] bg-base-100 shadow-xl transition-transform transform-gpu hover:scale-105 duration-700`} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
         <figure className="">
-          <img src={product.thumbnail} alt={product.name} className="rounded-xl w-96 h-96" />
+          <img src='/product.png' alt={product.name} className="rounded-xl w-96 h-96" />
         </figure>
         <div className="card-body transition-opacity">
           <h2 className={`card-title transition-colors`}>{product.name.toUpperCase()}</h2>

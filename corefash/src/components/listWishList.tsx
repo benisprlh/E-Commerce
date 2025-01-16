@@ -14,7 +14,6 @@ export default function ListWishList() {
         cache: 'no-store',
       });
       const userDetail: myWishListType = await response.json();
-      console.log(userDetail);
       setMyProducts(userDetail.myProducts);
     } catch (error) {
       console.log(error);
